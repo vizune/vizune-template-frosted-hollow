@@ -449,7 +449,7 @@ p {
 .brand__tag {
   margin-top: 7px;
   font-family: var(--font-display);
-  font-size: 0.55rem;
+  font-size: 0.625rem;
   letter-spacing: 0.55em;
   text-transform: uppercase;
   color: var(--muted);
@@ -465,7 +465,7 @@ p {
 }
 
 .brand--sm .brand__tag {
-  font-size: 0.48rem;
+  font-size: 0.55rem;
 }
 
 /* Nav */
@@ -1165,7 +1165,7 @@ p {
 
 .community__copy {
   position: relative;
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .community h2 {
