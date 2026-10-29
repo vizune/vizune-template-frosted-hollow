@@ -110,6 +110,12 @@ export const socials = [
   { name: 'Reddit', icon: 'reddit', href: '#' },
 ] as const;
 
+// Template credit shown at the bottom of the footer.
+export const credit = {
+  label: 'Vizune',
+  href: 'https://vizune.neocities.org',
+};
+
 export const legal = [
   { label: 'Privacy', href: '#' },
   { label: 'Terms', href: '#' },

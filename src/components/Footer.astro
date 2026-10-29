@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import SocialLinks from './SocialLinks.astro';
-import { legal, nav, site } from '../data/site';
+import { credit, legal, nav, site } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -34,7 +34,11 @@ const year = new Date().getFullYear();
     </form>
   </div>
   <div class="site-footer__bottom">
-    <p>© {year} {site.name}. All rights reserved. <span class="sep">|</span> A realm of imagination.</p>
+    <p>
+      © {year} {site.name}. All rights reserved. <span class="sep">|</span> A realm of imagination.{' '}
+      <span class="sep">|</span> Designed by{' '}
+      <a class="credit" href={credit.href} target="_blank" rel="noopener">{credit.label}</a>
+    </p>
     <ul>
       {legal.map((l) => (
         <li><a href={l.href}>{l.label}</a></li>

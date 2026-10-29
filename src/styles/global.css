@@ -1382,6 +1382,18 @@ p {
   margin-inline: 0.6em;
 }
 
+.site-footer__bottom .credit {
+  color: var(--accent);
+  border-bottom: 1px solid rgba(95, 188, 255, 0.35);
+  transition: color 0.2s, border-color 0.2s, text-shadow 0.2s;
+}
+
+.site-footer__bottom .credit:hover {
+  color: var(--ice-bright);
+  border-color: var(--ice);
+  text-shadow: 0 0 10px var(--glow);
+}
+
 .site-footer__bottom ul {
   display: flex;
   gap: 28px;
