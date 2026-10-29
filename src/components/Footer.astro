@@ -1,0 +1,44 @@
+---
+import Logo from './Logo.astro';
+import SocialLinks from './SocialLinks.astro';
+import { legal, nav, site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__top">
+    <Logo size="sm" />
+    <div class="site-footer__nav">
+      <nav aria-label="Footer">
+        <ul>
+          {nav.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <SocialLinks size="sm" />
+    </div>
+    <form class="newsletter" data-newsletter>
+      <label for="newsletter-email">
+        <span class="newsletter__title">Stay in the know</span>
+        <span class="newsletter__sub">Get the latest updates, lore, and artwork.</span>
+      </label>
+      <div class="newsletter__field">
+        <input id="newsletter-email" type="email" name="email" placeholder="Your email address" required autocomplete="email" />
+        <button type="submit" aria-label="Subscribe">
+          <svg viewBox="0 0 16 10" width="16" height="10" aria-hidden="true"><path d="M0 5h14M10 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" /></svg>
+        </button>
+      </div>
+      <p class="newsletter__status" role="status" data-newsletter-status></p>
+    </form>
+  </div>
+  <div class="site-footer__bottom">
+    <p>© {year} {site.name}. All rights reserved. <span class="sep">|</span> A realm of imagination.</p>
+    <ul>
+      {legal.map((l) => (
+        <li><a href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</footer>

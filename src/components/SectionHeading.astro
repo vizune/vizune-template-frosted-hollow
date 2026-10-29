@@ -1,0 +1,26 @@
+---
+import Arrow from './Arrow.astro';
+
+interface Props {
+  title: string;
+  id?: string;
+  linkLabel?: string;
+  href?: string;
+}
+
+const { title, id, linkLabel, href } = Astro.props;
+---
+
+<div class="section-heading">
+  <svg class="section-heading__mark" viewBox="0 0 34 12" width="34" height="12" aria-hidden="true">
+    <path d="M0 6h11M23 6h11" stroke="currentColor" stroke-width="1" />
+    <path d="M17 1l5 5-5 5-5-5z" fill="none" stroke="currentColor" stroke-width="1.2" />
+  </svg>
+  <h2 id={id}>{title}</h2>
+  <span class="section-heading__rule" aria-hidden="true"></span>
+  {linkLabel && href && (
+    <a class="link-arrow" href={href}>
+      {linkLabel} <Arrow />
+    </a>
+  )}
+</div>

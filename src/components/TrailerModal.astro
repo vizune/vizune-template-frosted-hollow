@@ -1,0 +1,42 @@
+---
+import { trailer } from '../data/site';
+
+// The iframe is only created when the modal opens (see scripts/main.ts),
+// so YouTube isn't loaded on page load and playback stops on close.
+const embed = `https://www.youtube-nocookie.com/embed/${trailer.youtubeId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+---
+
+<dialog class="trailer" aria-labelledby="trailer-title" data-trailer>
+  <div class="frame trailer__panel">
+    <div class="frame__inner">
+      <span class="trailer__corner trailer__corner--tl" aria-hidden="true"></span>
+      <span class="trailer__corner trailer__corner--tr" aria-hidden="true"></span>
+      <span class="trailer__corner trailer__corner--bl" aria-hidden="true"></span>
+      <span class="trailer__corner trailer__corner--br" aria-hidden="true"></span>
+
+      <header class="trailer__head">
+        <div>
+          <p class="eyebrow">Frosthollow</p>
+          <h2 id="trailer-title">Watch the trailer</h2>
+        </div>
+        <button type="button" class="trailer__close" aria-label="Close trailer" data-trailer-close>
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true">
+            <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="trailer__video" data-trailer-video data-src={embed} data-title={trailer.title}>
+        <div class="trailer__loading" aria-hidden="true">
+          <img src="/images/logo.webp" alt="" width="64" height="64" />
+        </div>
+      </div>
+
+      <p class="trailer__caption">
+        <span class="trailer__rule" aria-hidden="true"></span>
+        {trailer.title}
+        <span class="trailer__rule" aria-hidden="true"></span>
+      </p>
+    </div>
+  </div>
+</dialog>

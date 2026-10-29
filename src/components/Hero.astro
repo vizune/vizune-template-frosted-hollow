@@ -1,0 +1,61 @@
+---
+import Arrow from './Arrow.astro';
+import { chapters, site, trailer } from '../data/site';
+
+const first = chapters[0];
+---
+
+<section class="hero" id="top" data-hero>
+  <div class="hero__media" aria-hidden="true">
+    <img
+      class="hero__bg"
+      src="/images/banner.webp"
+      alt=""
+      width="2172"
+      height="506"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+
+  <div class="hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow" data-hero-eyebrow>{first.eyebrow}</p>
+      <h1 class="hero__title">{site.name}</h1>
+      <p class="hero__lede">An immersive fantasy realm of ruin, magic, and enduring legends.</p>
+      <p class="hero__body" data-hero-body>{first.body}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#lore">Explore the world <Arrow /></a>
+        <a
+          class="btn btn--ghost"
+          href={`https://www.youtube.com/watch?v=${trailer.youtubeId}`}
+          target="_blank"
+          rel="noopener"
+          aria-haspopup="dialog"
+          data-trailer-open
+        >
+          <svg viewBox="0 0 12 14" width="10" height="12" aria-hidden="true"><path d="M0 0l12 7-12 7z" fill="currentColor" /></svg>
+          Watch trailer
+        </a>
+      </div>
+    </div>
+
+    <ol class="chapters" aria-label="Chapters">
+      {chapters.map((c, i) => (
+        <li>
+          <button
+            type="button"
+            class="chapters__item"
+            aria-pressed={i === 0 ? 'true' : 'false'}
+            data-chapter={i}
+            data-eyebrow={c.eyebrow}
+            data-body={c.body}
+          >
+            <span class="chapters__num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="chapters__label">{c.label}</span>
+          </button>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

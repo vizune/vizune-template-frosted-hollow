@@ -1,0 +1,17 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  size?: 'lg' | 'sm';
+}
+
+const { size = 'lg' } = Astro.props;
+---
+
+<a href="#top" class={`brand brand--${size}`} aria-label={`${site.name} home`}>
+  <img class="brand__mark" src="/images/logo.webp" alt="" width="64" height="64" />
+  <span class="brand__text">
+    <span class="brand__name">{site.name}</span>
+    <span class="brand__tag">{site.tagline}</span>
+  </span>
+</a>

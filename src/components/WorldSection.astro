@@ -1,0 +1,30 @@
+---
+import Arrow from './Arrow.astro';
+import FeatureIcon from './FeatureIcon.astro';
+import Ornament from './Ornament.astro';
+import { features } from '../data/site';
+---
+
+<section class="frame world" aria-labelledby="lore">
+  <div class="frame__inner">
+    <img class="world__art" src="/images/clockwork-gate.webp" alt="" loading="lazy" width="420" height="450" />
+    <div class="world__content">
+      <h2 id="lore" class="world__title">A living, breathing world</h2>
+      <p class="world__kicker">Explore <span>·</span> Discover <span>·</span> Uncover</p>
+      <p class="world__body">
+        From snow-choked peaks to forgotten ruins, Frosthollow is a realm of ancient magic and untold stories.
+        Journey through vast landscapes, meet enigmatic characters, and piece together a history buried beneath the ice.
+      </p>
+      <Ornament variant="small" />
+      <ul class="features">
+        {features.map((f) => (
+          <li>
+            <FeatureIcon name={f.icon} />
+            <span>{f.label}</span>
+          </li>
+        ))}
+      </ul>
+      <a class="btn btn--ghost" href="#">Learn more <Arrow /></a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+import Arrow from './Arrow.astro';
+import { gallery } from '../data/site';
+---
+
+<section class="frame gallery" aria-labelledby="gallery" data-gallery>
+  <div class="frame__inner">
+    <div class="panel-head">
+      <h2 id="gallery">Featured gallery</h2>
+      <a class="link-arrow" href="#">View all <Arrow /></a>
+    </div>
+
+    <div class="gallery__stage">
+      {gallery.map((g, i) => (
+        <img
+          src={g.src}
+          alt={g.alt}
+          loading={i === 0 ? 'eager' : 'lazy'}
+          class={i === 0 ? 'is-active' : ''}
+          data-slide={i}
+        />
+      ))}
+    </div>
+
+    <div class="gallery__strip">
+      <button type="button" class="gallery__nav" aria-label="Previous image" data-prev>
+        <svg viewBox="0 0 8 14" width="8" height="14" aria-hidden="true"><path d="M7 1L1 7l6 6" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+      </button>
+      <ul class="gallery__thumbs">
+        {gallery.map((g, i) => (
+          <li>
+            <button
+              type="button"
+              aria-label={`Show image ${i + 1}`}
+              aria-current={i === 0 ? 'true' : 'false'}
+              data-thumb={i}
+            >
+              <img src={g.src} alt="" loading="lazy" />
+            </button>
+          </li>
+        ))}
+      </ul>
+      <button type="button" class="gallery__nav" aria-label="Next image" data-next>
+        <svg viewBox="0 0 8 14" width="8" height="14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+      </button>
+    </div>
+    <div class="gallery__dots" aria-hidden="true" data-dots></div>
+  </div>
+</section>

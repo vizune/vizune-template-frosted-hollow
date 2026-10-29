@@ -1,0 +1,42 @@
+---
+import Logo from './Logo.astro';
+import SearchPanel from './SearchPanel.astro';
+import { nav } from '../data/site';
+---
+
+<header class="site-header" data-header>
+  <div class="site-header__inner">
+    <Logo />
+    <nav class="site-nav" aria-label="Main" data-nav>
+      <ul>
+        {nav.map((item, i) => (
+          <li>
+            <a href={item.href} aria-current={i === 0 ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="site-header__actions">
+      <button
+        class="icon-btn search-toggle"
+        type="button"
+        aria-label="Search (press /)"
+        aria-controls="site-search"
+        aria-expanded="false"
+        data-search-open
+      >
+        <svg class="search-morph" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <circle class="search-morph__lens" cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="1.6" />
+          <path class="search-morph__a" d="M5 5L19 19" pathLength="1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          <path class="search-morph__b" d="M19 5L5 19" pathLength="1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+      </button>
+      <a class="btn btn--ghost btn--sm" href="#community">Join</a>
+      <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <SearchPanel />
+</header>
+<div class="search-scrim" aria-hidden="true" data-search-scrim></div>

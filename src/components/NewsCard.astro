@@ -1,0 +1,35 @@
+---
+import Arrow from './Arrow.astro';
+
+interface Props {
+  category: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  cta: string;
+  href: string;
+}
+
+const { category, date, title, excerpt, image, cta, href } = Astro.props;
+const display = new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<article class="frame news-card">
+  <div class="frame__inner">
+    <div class="news-card__media">
+      <img src={image} alt="" loading="lazy" width="600" height="360" />
+    </div>
+    <div class="news-card__body">
+      <div class="news-card__meta">
+        <span class="news-card__cat">{category}</span>
+        <time datetime={date}>{display}</time>
+      </div>
+      <h3>{title}</h3>
+      <p>{excerpt}</p>
+      <a class="link-arrow link-arrow--underline" href={href}>
+        {cta} <Arrow />
+      </a>
+    </div>
+  </div>
+</article>

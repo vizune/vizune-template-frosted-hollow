@@ -1,0 +1,22 @@
+---
+import { socials } from '../data/site';
+import { socialIcons } from '../data/social-icons';
+
+interface Props {
+  size?: 'md' | 'sm';
+}
+
+const { size = 'md' } = Astro.props;
+---
+
+<ul class={`socials socials--${size}`}>
+  {socials.map((s) => (
+    <li>
+      <a href={s.href} aria-label={s.name}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d={socialIcons[s.icon]} fill="currentColor" />
+        </svg>
+      </a>
+    </li>
+  ))}
+</ul>
